@@ -771,6 +771,9 @@
             <summary>
             Gets or sets the value which indicates whether the headers can be repeated in each page or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExcludeColumns">
             <summary>
@@ -781,67 +784,105 @@
             <summary>
             Gets or sets a value which indicates whether the column widths are automatically assigned based on its content or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.AutoRowHeight">
             <summary>
             Gets or sets a value which indicates whether the row heights are automatically assigned based on its content or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportFormat">
             <summary>
             Gets or sets a value which indicates whether the values should be exported with format or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportDetailsView">
             <summary>
             Gets or sets a value which indicates whether DetailsViewDataGrid should be exported or not.
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportAllDetails">
             <summary>
             Gets or sets a value which indicates whether all DetailsViewDataGrids should be exported even if it is not expanded.
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportUnBoundRows">
             <summary>
             Gets or sets a value which indicates whether the UnBoundRows should be exported or not.
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportMergedCells">
             <summary>
             Gets or sets a value which indicates whether Merged Cells should be exported or not.
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportAllPages">
             <summary>
             Gets or sets a value which indicates whether all pages should be exported or not.
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportGroups">
             <summary>
             Gets or sets a value which indicates whether groups should be exported or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportGroupSummary">
             <summary>
             Gets or sets a value which indicates whether group summary should be exported or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportTableSummary">
             <summary>
             Gets or sets a value which indicates whether table summary should be exported or not.
             </summary>
+            <value>
+            Default value is true.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.FitAllColumnsInOnePage">
             <summary>
             Gets or sets a value which indicates whether all columns should be fit on a page or not.
-            <value>true</value>
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportStackedHeaders">
             <summary>
             Gets or sets a value which indicates whether stacked headers should be exported or not.
             </summary>
+            <value>
+            Default value is false.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ChildLevel">
             <summary>
@@ -862,6 +903,9 @@
             <summary>
             Gets or sets the row index of SfDataGrid which keeps track of the row index while exporting.
             </summary>
+            <value>
+            Default value is zero.
+            </value>
         </member>
         <member name="P:Syncfusion.UI.Xaml.Grid.Converter.PdfExportingOptions.ExportingEventHandler">
             <summary>

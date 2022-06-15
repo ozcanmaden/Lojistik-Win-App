@@ -303,10 +303,10 @@
         </member>
         <member name="P:Syncfusion.Data.ICollectionViewAdv.IsInDeferRefresh">
             <summary>
-            Gets a value that indicates whether the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh"/> in action.
+            Gets a value that indicates whether the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh(System.Boolean)"/> in action.
             </summary>
             <value>
-            <b>True</b> if the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh"/> in action, otherwise <b>false</b>.
+            <b>True</b> if the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh(System.Boolean)"/> in action, otherwise <b>false</b>.
             </value>
         </member>
         <member name="T:Syncfusion.Data.IUnboundExpressionFunc">
@@ -319,6 +319,8 @@
             Gets the custom function to enable runtime customized objects over default operations other than LINQ queries.
             </summary>
             <param name="propertyName"></param>
+            <param name="operation"></param>
+            <param name="reflectionMode"></param>
             <returns>The custom function to enable runtime customized objects over default operations other than LINQ queries.</returns>
         </member>
         <member name="M:Syncfusion.Data.IUnboundExpressionFunc.GetExpressionFunc(System.String,Syncfusion.Data.DataOperation,Syncfusion.Data.DataReflectionMode)">
@@ -707,6 +709,16 @@
             Signals the object that initialization is complete and hence resumes the data operations and reinitialize the view.   
             </summary>
         </member>
+        <member name="M:Syncfusion.Data.CollectionViewAdv.EnsureView">
+            <summary>
+            Ensures sorting, grouping and filtering by refreshing the view with updated collection.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.CollectionViewAdv.ResetFilter">
+            <summary>
+            Resets the Filter.
+            </summary>
+        </member>
         <member name="M:Syncfusion.Data.CollectionViewAdv.CreateRecords">
             <summary>
             Creates the records for the items in the source of the collection view.
@@ -861,7 +873,7 @@
             <summary>
             Refreshes the view when the filtering is applied through <see cref="M:Syncfusion.Data.CollectionViewAdv.FilterRecord(System.Object)"/> delegate.
             </summary>
-            <param name="isProgrammatic">A boolean value indicating whether filtering is done programmatically.</param>
+            <param name="IsProgrammatic">A boolean value indicating whether filtering is done programmatically.</param>
         </member>
         <member name="M:Syncfusion.Data.CollectionViewAdv.OnPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
@@ -877,7 +889,14 @@
             <param name="sender">The sender of the event.</param>
             <param name="e">The <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> that contains the event for the data.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Syncfusion.Data.CollectionViewAdv.CanUpdateSummary(Syncfusion.Data.ISummaryRow,System.String)" -->
+        <member name="M:Syncfusion.Data.CollectionViewAdv.CanUpdateSummary(Syncfusion.Data.ISummaryRow,System.String)">
+            <summary>
+            Checks whether the summary can be updated for the given row and property.
+            </summary>
+            <param name="row">The summary row which is to be updated.</param>
+            <param name="propertyName">The summary column's property which is to be updated.</param>
+            <returns><b>True</b> if the summary can be updated for the given row and property; otherwise <b>false</b>.</returns>
+        </member>
         <member name="M:Syncfusion.Data.CollectionViewAdv.OnRecordPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
             <summary>
             This method fires when the record property is changed.
@@ -1086,6 +1105,11 @@
             </summary>
             <param name="propertyName"></param>
         </member>
+        <member name="F:Syncfusion.Data.CollectionViewAdv.IsDisposed">
+            <summary>
+            Gets or sets a value indicating whether the view has been disposed of.
+            </summary>
+        </member>
         <member name="M:Syncfusion.Data.CollectionViewAdv.Dispose">
             <summary>
             Disposes all the resources used by the <see cref="T:Syncfusion.Data.CollectionViewAdv"/> class.
@@ -1136,6 +1160,11 @@
         <member name="M:Syncfusion.Data.CollectionViewAdv.EndEdit">
             <summary>
             Ends editing in the current item.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Data.CollectionViewAdv.IsInCommitEdit">
+            <summary>
+            Gets or sets a value indicating whether the view is in commit edit.
             </summary>
         </member>
         <member name="M:Syncfusion.Data.CollectionViewAdv.CommitEdit">
@@ -1203,13 +1232,23 @@
             When the <see cref="!:Syncfusion.UI.Xaml.Grid.GroupColumnDescription"/> are added, the groups are maintained in <see cref="P:Syncfusion.Data.TopLevelGroup.DisplayElements"/>.
             </remarks>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Syncfusion.Data.CollectionViewAdv.EnableSummaryOptimization" -->
-        <member name="P:Syncfusion.Data.CollectionViewAdv.IsInDeferRefresh">
+        <member name="P:Syncfusion.Data.CollectionViewAdv.EnableSummaryOptimization">
             <summary>
-            Gets a value that indicates whether the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh"/> in action.
+            Gets or sets a boolean value that indicates whether to enable optimistic summary calculation on real time updates.
             </summary>
             <value>
-            <b>True</b> if the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh"/> in action, otherwise <b>false</b>.
+            A boolean value that indicates whether to enable optimistic summary calculation on real time updates.
+            </value>
+            <remarks>
+            The <see cref="P:Syncfusion.Data.CollectionViewAdv.EnableSummaryOptimization"/> calculates the summary optimistically when the data objects implement the <see cref="T:System.ComponentModel.INotifyPropertyChanging"/> and <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Data.CollectionViewAdv.IsInDeferRefresh">
+            <summary>
+            Gets a value that indicates whether the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh(System.Boolean)"/> in action.
+            </summary>
+            <value>
+            <b>True</b> if the <see cref="M:Syncfusion.Data.CollectionViewAdv.DeferRefresh(System.Boolean)"/> in action, otherwise <b>false</b>.
             </value>
         </member>
         <member name="P:Syncfusion.Data.CollectionViewAdv.IsGrouping">
@@ -1703,7 +1742,7 @@
             <param name="source">The IQueryable source.</param>
             <param name="parameterExpression">The parameter expression.</param>
             <param name="columnName">The column name.</param>
-            <param name="returncolExpression">A boolean value indicating whether to return the column 
+            <param name="returnColumnExpression">A boolean value indicating whether to return the column 
             expression.</param>
             <returns>The predicate expression for the given values.</returns>
         </member>
@@ -2102,6 +2141,14 @@
             <param name="isInSourceCollectionChange">A boolean value indicating whether the source collection 
             change is currently in progress.</param>
         </member>
+        <member name="M:Syncfusion.Data.GroupDisplayElements.GetGroupSortedIndex(Syncfusion.Data.Group,Syncfusion.Data.Group)">
+            <summary>
+            Gets the sorted index of the new group.
+            </summary>
+            <param name="group">The base group.</param>
+            <param name="newGroup">The new group.</param>
+            <returns>Returns the sorted index of the new group.</returns>
+        </member>
         <member name="M:Syncfusion.Data.GroupDisplayElements.Clear">
             <summary>
             Clears all the items in the group.
@@ -2134,8 +2181,6 @@
             <paramref name="arrayIndex"/> is equal to or greater than the length of <paramref name="array"/>.
             -or-
             The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
-            -or-
-            Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
             </exception>
         </member>
         <member name="M:Syncfusion.Data.GroupDisplayElements.Remove(Syncfusion.Data.NodeEntry)">
@@ -2361,6 +2406,11 @@
             <param name="level">The level at which the group is to be added.</param>
             <returns>Returns the newly created group.</returns>
         </member>
+        <member name="F:Syncfusion.Data.Group.TopLevelGroup">
+            <summary>
+            Maintains a new Instance of <see cref="!:Syncfusion.UI.Xaml.Data.TopLevelGroup"/>
+            </summary>
+        </member>
         <member name="M:Syncfusion.Data.Group.GetSummaryValue(System.String)">
             <summary>
             Gets the summary value for the given column name.
@@ -2406,10 +2456,20 @@
             </summary>
             <param name="level">The level of the group for which details is to be added.</param>
         </member>
+        <member name="F:Syncfusion.Data.Group.isDirty">
+            <summary>
+            Maintains a value that Indicates whether the group is dirty or not.
+            </summary>
+        </member>
         <member name="M:Syncfusion.Data.Group.SetDirty">
             <summary>
             Sets the group as dirty. When this is set to true, the YAmountCache will be re-computed for the whole group structure. 
             By calling this method, the height of the top-level group will be computed.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Data.Group.isSourceYAmountDirty">
+            <summary>
+            Maintains a value Indicates whether the Y amount cache is dirty or not.
             </summary>
         </member>
         <member name="M:Syncfusion.Data.Group.GetYAmountCache">
@@ -2852,6 +2912,12 @@
             </summary>
             <param name="entry">The entry.</param>
             <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Data.GroupingExtensions.SetDirty(System.Collections.Generic.List{Syncfusion.Data.Group})">
+            <summary>
+            Sets the given collection of groups as dirty.
+            </summary>
+            <param name="groups">The collection of groups to be set as dirty.</param>
         </member>
         <member name="T:Syncfusion.Data.GroupRecordEntry">
             <summary>
@@ -3389,7 +3455,7 @@
             <summary>
             Adds the specified data to the record collection.
             </summary>
-            <param name="data">The data to be added to the record collection.</param>
+            <param name="item">The data to be added to the record collection.</param>
         </member>
         <member name="M:Syncfusion.Data.RecordsListBase.Clear">
             <summary>
@@ -3423,8 +3489,6 @@
             <paramref name="arrayIndex"/> is equal to or greater than the length of <paramref name="array"/>.
             -or-
             The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
-            -or-
-            Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
             </exception>
         </member>
         <member name="M:Syncfusion.Data.RecordsListBase.Remove(Syncfusion.Data.RecordEntry)">
@@ -3572,7 +3636,7 @@
             <param name="currentValue">The current summary value.</param>
             <param name="oldValue">The old summary value.</param>
             <param name="newValue">The new summary value.</param>
-            <param name="recordAction">The collection changed action.</param>
+            <param name="recordaction">The collection changed action.</param>
             <param name="propertyName">The name of the property that is changed.</param>
             <param name="recordCount">The count of the records in the group.</param>
             <returns>Returns the modified value of the summary calculation based on the given values.</returns>
@@ -3975,6 +4039,21 @@
             </summary>
             <exclude/>
         </member>
+        <member name="F:Syncfusion.Data.SummaryCreator.ColumnName">
+            <summary>
+            Maintains the column name.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Data.SummaryCreator.Key">
+            <summary>
+            Maintains the key.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Data.SummaryCreator.ItemsCount">
+            <summary>
+            Maintains the group item count.
+            </summary>
+        </member>
         <member name="M:Syncfusion.Data.SummaryCreator.GetSummaryDisplayTextForRow(Syncfusion.Data.SummaryRecordEntry,Syncfusion.Data.ICollectionViewAdv,System.String)">
             <summary>
             Gets the summary display text for the summary row based on the given values.
@@ -4153,7 +4232,14 @@
             Defines common functionality for GridSummaryColumn for calculating and displaying the summary value.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Syncfusion.Data.ISummaryColumn.CustomAggregate" -->
+        <member name="P:Syncfusion.Data.ISummaryColumn.CustomAggregate">
+            <summary>
+            Gets or sets the instance of <see cref="T:Syncfusion.Data.ISummaryAggregate"/> to implement the custom summary.
+            </summary>
+            <value>
+            An instance of <see cref="T:Syncfusion.Data.ISummaryAggregate"/> to implement the custom summary. The default value is null.
+            </value>
+        </member>
         <member name="P:Syncfusion.Data.ISummaryColumn.Format">
             <summary>
             Gets or sets the string that indicates how the summary value is formatted in display.
@@ -4442,6 +4528,7 @@
             <param name="group">The group for which the caption text is to be obtained.</param>
             <param name="groupSpecifierText">The specifier text of the group whose caption text 
             is to be obtained.</param>
+            <param name="columnHeaderName">The Column's Header Name</param>
             <returns>The group caption text for the specified <see cref="T:Syncfusion.Data.Group"/>.</returns>
         </member>
         <member name="M:Syncfusion.Data.TopLevelGroup.GetGroupCaptionTextList(Syncfusion.Data.Group,System.String,System.String)">
@@ -4452,6 +4539,7 @@
             <param name="group">The group for which the caption text is to be obtained.</param>
             <param name="groupSpecifierText">The specifier text of the group whose caption text 
             is to be obtained.</param>
+            <param name="columnHeaderName">The Column's Header Name</param>
             <returns>The key-value pair of the group caption text list, which contains the text to be 
             displayed in the summary for the specified <see cref="T:Syncfusion.Data.Group"/>.</returns>
         </member>
@@ -4480,7 +4568,7 @@
             <summary>
             Group Caption Summary calculated while SummaryCalculationMode is OnDemandCaptionSummary
             </summary>
-            <param name="summaryentry">Contains the summary details</param>
+            <param name="summaryEntry">Contains the summary details</param>
             <param name="columnName">Contains the column mapping name</param>
             <param name="group">Contains group record of column</param>
         </member>
@@ -4500,6 +4588,7 @@
             <summary>
             Updates the summaries for the specified <see cref="T:Syncfusion.Data.Group"/>.
             </summary>
+            <param name="srecordentry">The SummaryRecordEntry</param>
             <param name="group">The group.</param>
         </member>
         <member name="M:Syncfusion.Data.TopLevelGroup.UpdateSummaries(Syncfusion.Data.Group,Syncfusion.Data.SummaryRecordEntry,Syncfusion.Data.ISummaryRow,Syncfusion.Data.SummaryCalculationUnit)">
@@ -5417,13 +5506,18 @@
         </member>
         <member name="M:Syncfusion.Data.PagedCollectionView.RefreshFilter(System.Boolean)">
             <summary>
-            Refreshes the view when the filtering is applied through <see cref="!:FilterRecord"/> delegate.
+            Refreshes the view when the filtering is applied through <see cref="M:Syncfusion.Data.ICollectionViewAdv.FilterRecord(System.Object)"/> delegate.
             </summary>
             <param name="isProgrammatic">A boolean value indicating whether filtering is done programmatically.</param>
         </member>
         <member name="M:Syncfusion.Data.PagedCollectionView.RefreshSort">
             <summary>
             Refreshes sorting in the underlying collection of the SfDataGrid.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.PagedCollectionView.EnsureView">
+            <summary>
+            Ensures sorting, grouping and filtering by refreshing the view with updated collection.
             </summary>
         </member>
         <member name="M:Syncfusion.Data.PagedCollectionView.GetGroupResult(System.String[])">
@@ -5597,7 +5691,17 @@
             </summary>
             <value><b>True</b> if a new item can be added to the collection, otherwise<b>false</b>.</value>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Syncfusion.Data.PagedCollectionView.EnableSummaryOptimization" -->
+        <member name="P:Syncfusion.Data.PagedCollectionView.EnableSummaryOptimization">
+            <summary>
+            Gets or sets a boolean value that indicates whether to enable optimistic summary calculation on real time updates.
+            </summary>   
+            <value>
+            A boolean value that indicates whether to enable optimistic summary calculation on real time updates.
+            </value>
+            <remarks>
+            The <see cref="!:Data.EnableSummaryOptimization"/> calculates the summary optimistically when the data objects implement the <see cref="T:System.ComponentModel.INotifyPropertyChanging"/> and <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
+            </remarks>
+        </member>
         <member name="E:Syncfusion.Data.PagedCollectionView.OnDemandItemsLoading">
             <summary>
             Occurs when the items are loaded on demand to the page.
@@ -5735,7 +5839,7 @@
             </summary>
             <param name="view">The collection view.</param>
             <param name="source">The IQueryable source.</param>
-            <param name="paramExpression">The parameter expression.</param>
+            <param name="parameterExpression">The parameter expression.</param>
             <returns>The predicate expression for the given values.</returns>
         </member>
         <member name="M:Syncfusion.Data.QueryableCollectionViewExtensions.GetPredicateExpressionExt(Syncfusion.Data.CollectionViewAdv,System.Linq.IQueryable,System.Linq.Expressions.ParameterExpression@,System.String,System.Boolean)">
@@ -5743,7 +5847,7 @@
             <param name="source">The IQueryable source.</param>
             <param name="parameterExpression">The parameter expression.</param>
             <param name="columnName">The column name.</param>
-            <param name="returncolExpression">A boolean value indicating whether to return the column 
+            <param name="returnColumnExpression">A boolean value indicating whether to return the column 
             expression.</param>
             <returns>The predicate expression for the given values.</returns>
         </member>
@@ -6159,6 +6263,36 @@
         <member name="T:Syncfusion.Data.VirtualGroup">
             <exclude/>
         </member>
+        <member name="M:Syncfusion.Data.VirtualGroup.#ctor(Syncfusion.Data.Group,System.Int32)">
+            <summary>
+            Initializes a new Instances of <see cref="T:Syncfusion.Data.VirtualGroup"/> class.
+            </summary>
+            <param name="parent"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroup.CreateNewGroup(Syncfusion.Data.Group,Syncfusion.Data.Extensions.GroupResult,System.Int32)">
+            <summary>
+            Creates a new group.
+            </summary>
+            <param name="parent"></param>
+            <param name="groupResult"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroup.CreateNewGroup(Syncfusion.Data.Group,System.Object,System.Int32)">
+            <summary>
+            Creates a new group based on key.
+            </summary>
+            <param name="parent"></param>
+            <param name="key"></param>
+            <param name="level"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroup.CreateDetailsForRecords(Syncfusion.Data.Group,System.Int32)">
+            <summary>
+            Create Details for record.
+            </summary>
+            <param name="parent"></param>
+            <param name="level"></param> 
+        </member>
         <member name="M:Syncfusion.Data.VirtualGroup.CreateDetailsForRecords(Syncfusion.Data.Group,System.Collections.IEnumerable,System.Int32)">
             <summary>
             Create Details for record based on filter predicate
@@ -6171,11 +6305,19 @@
             <summary>
             Creates the record.
             </summary>
+            <param name="parent">The Group</param>
             <param name="data">The data to create the RecordEntry.</param>
             <returns>Returns the RecordEntry for parent with specified data.</returns>
         </member>
         <member name="T:Syncfusion.Data.VirtualGroupRecordEntry">
             <exclude/>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroupRecordEntry.#ctor(Syncfusion.Data.NodeEntry,System.Int32)">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.Data.VirtualGroupRecordEntry"/> class.
+            </summary>
+            <param name="parent"></param>
+            <param name="level"></param>
         </member>
         <member name="M:Syncfusion.Data.VirtualGroupRecordEntry.#ctor(Syncfusion.Data.NodeEntry,System.Int32,System.Collections.IEnumerable,System.Predicate{System.Object})">
             <summary>
@@ -6185,6 +6327,55 @@
             <param name="level">level of group</param>
             <param name="source">Grouped items</param>
             <param name="filterPredicate">Func to filter Internal list</param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroupRecordEntry.InitializeRecords(Syncfusion.Data.NodeEntry)">
+            <summary>
+            Initialize the records in the group record entry.
+            </summary>
+            <param name="parent"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroupRecordEntry.PopulateRecords(System.Collections.IEnumerable,System.Predicate{System.Object})">
+            <summary>
+            Populates the record to group record entry from the given source and based on the given filter.
+            </summary>
+            <param name="source"></param>
+            <param name="filterPredicate"></param>
+        </member>
+        <member name="T:Syncfusion.Data.VirtualRecordEntryList">
+            <summary>
+            Represents the <see cref="T:Syncfusion.Data.VirtualRecordEntryList"/> class.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Data.VirtualRecordEntryList.SourceList">
+            <summary>
+            Maintains the source list collection. 
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.#ctor(Syncfusion.Data.Group)">
+            <summary>
+            Initializes the VirtualRecordEntryList class.
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.OnInitialize">
+            <summary>
+            Initialize the internalList and SourceList Collection.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.GetRecordEntry(System.Int32,System.Object)">
+            <summary>
+            Gets the Object of <see cref="T:Syncfusion.Data.RecordEntry"/> for the specified record index and underlying data in the collection.
+            </summary>
+            <param name="recordIndex"></param>
+            <param name="data"></param>
+            <returns>Object of <see cref="T:Syncfusion.Data.RecordEntry"/> for the specified record index and underlying data in the collection.</returns>.
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.GetRecord(System.Int32)">
+            <summary>
+            Gets the Object of the record entry for the specified record index.
+            </summary>
+            <param name="index">The Record Index</param>
+            <returns>The object of Record Entry for the Specified Record Index</returns>
         </member>
         <member name="M:Syncfusion.Data.VirtualRecordEntryList.IndexOfRecord(System.Object)">
             <summary>
@@ -6213,10 +6404,34 @@
             <param name="index"></param>
             <param name="item"></param>
         </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.Add(Syncfusion.Data.RecordEntry)">
+            <summary>
+            Adds an item to the SourceList.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.GetEnumerator">
+            <summary>
+            Gets an Enumerator that iterates through the collection.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1"/>that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryList.GetSource">
+            <summary>
+            Gets the Source of the Record Entry Collection.
+            </summary>
+            <returns>the Source of the Record Entry Collection.</returns>
+        </member>
         <member name="T:Syncfusion.Data.VirtualGroupRecordEntryEnumerator">
             <summary>
             Represent the class to process the enumerator for Records in Group.
             </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroupRecordEntryEnumerator.#ctor(Syncfusion.Data.VirtualRecordEntryList)">
+            <summary>
+            Initializes a instance of VirtualRecordEntryList with specified <paramref name="recordsList"/>.
+            </summary>
+            <param name="recordsList"></param>
         </member>
         <member name="M:Syncfusion.Data.VirtualGroupRecordEntryEnumerator.Dispose">
             <summary>
@@ -6229,9 +6444,40 @@
             </summary>
             <param name="isDisposing">Indicates whether the call is from Dispose method or from a finalizer.</param>
         </member>
+        <member name="M:Syncfusion.Data.VirtualGroupRecordEntryEnumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+            <value>
+            <b>true</b> if the enumerator was successfully advanced to the next element;
+            <b>false</b> if the enumerator has passed the end of the collection.
+            </value>         
+        </member>
+        <member name="M:Syncfusion.Data.VirtualGroupRecordEntryEnumerator.Reset">
+            <summary>
+            Sets the enumerator to its initial position, which is before the first element in the collection.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Data.VirtualGroupRecordEntryEnumerator.Current">
+            <summary>
+            Gets the element in the collection at the current position of the enumerator.
+            </summary>
+            <returns>The element in the collection at the current position of the enumerator.</returns>
+        </member>
         <member name="T:Syncfusion.Data.VirtualizingCollectionView">
             <summary>
             Represents a view for grouping, sorting, filtering, and navigating a data collection in on-demand.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.#ctor(System.Collections.IEnumerable)">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.Data.VirtualizingCollectionView"/> class.
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.#ctor">
+            <summary>
+            Initializes new instance of <see cref="T:Syncfusion.Data.VirtualizingCollectionView"/> class.
             </summary>
         </member>
         <member name="M:Syncfusion.Data.VirtualizingCollectionView.ProcessSort(System.ComponentModel.SortDescriptionCollection)">
@@ -6268,6 +6514,65 @@
             <param name="item">Specifies the item to get the index</param>
             <returns>Returns the index at which the specified item is located</returns>
         </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.IndexOf(System.Object)">
+            <summary>
+            Gets the index of the given item.
+            </summary>
+            <param name="item"></param>
+            <returns>the index of the given item.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.SetSource(System.Collections.IEnumerable)">
+            <summary>
+            Sets the Source of the collection view.
+            </summary>
+            <param name="_source"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.CreateRecords">
+            <summary>
+            Creates a record for items in the <see cref="P:Syncfusion.Data.QueryableCollectionView.ViewSource"/>.
+            </summary>
+            <returns>Record for items in the <see cref="P:Syncfusion.Data.QueryableCollectionView.ViewSource"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.CreateTopLevelGroup">
+            <summary>
+            Creates a Top Level Group.
+            </summary>
+            <returns>A top level group.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.RefreshSort">
+            <summary>
+            Refreshes the sorting in the view.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.CreateRowFilterPredicate">
+            <summary>
+            Creates a row filter predicate which filters the items to be displayed in the view.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.ResetFilter">
+            <summary>
+            Resets the filter of the Collection View.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.OnSortDescriptionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
+            <summary>
+            Invoked When the Sort Description Collection is Changed.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.GetGroupResult(System.String[])">
+            <summary>
+            Gets the IEnumerable collection of GroupResult for the array of <paramref name="groupBy"/>.
+            </summary>
+            <param name="groupBy"></param>
+            <returns>the IEnumerable collection of GroupResult for the array of <paramref name="groupBy"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingCollectionView.GetItemProperties">
+            <summary>
+            Gets the Collection of ItemProperies that contains,the property and its information.
+            </summary>
+            <returns>the Collection of ItemProperies that contains,the property and its information.</returns>
+        </member>
         <member name="M:Syncfusion.Data.VirtualizingCollectionView.GetViewRecordCount">
             <summary>
             Gets the records count that are inview.
@@ -6276,6 +6581,36 @@
         </member>
         <member name="T:Syncfusion.Data.VirtualizingTopLevelGroup">
             <exclude/>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingTopLevelGroup.#ctor(Syncfusion.Data.CollectionViewAdv)">
+            <summary>
+            Initializes new instance of <see cref="T:Syncfusion.Data.VirtualizingTopLevelGroup"/> class.
+            </summary>
+            <param name="collectionView"></param>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingTopLevelGroup.CreateNewGroup(Syncfusion.Data.Group,Syncfusion.Data.Extensions.GroupResult,System.Int32)">
+            <summary>
+            Creates the new group based on given credentials.
+            </summary>
+            <param name="parent"></param>
+            <param name="groupResult"></param>
+            <param name="level"></param>
+            <returns>Creates the new group based on given credentials.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingTopLevelGroup.CreateNewGroup(Syncfusion.Data.Group,System.Object,System.Int32)">
+            <summary>
+            Creates the new group whithin the given <paramref name="parent"/> group,with the given <paramref name="key"/> and <paramref name="level"/>.
+            </summary>
+            <param name="parent"></param>
+            <param name="key"></param>
+            <param name="level"></param>
+            <returns>the new group whithin the given <paramref name="parent"/> group,with the given <paramref name="key"/> and <paramref name="level"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualizingTopLevelGroup.GetUnderlyingSourceType">
+            <summary>
+            Gets the Source type of underlying collection of the top level group.
+            </summary>
+            <returns>the Source type of underlying collection of the top level group.</returns>
         </member>
         <member name="T:Syncfusion.Data.VirtualRecordsList">
             <summary>
@@ -6293,6 +6628,18 @@
             Gets or Sets the TopRecordIndex.
             </summary>
             <remarks>TopRecordIndex used to avoid unwanted records fetched from query while scrolling.</remarks>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordsList.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.Data.VirtualRecordsList"/> class with default settings.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordsList.#ctor(System.Collections.IEnumerable,Syncfusion.Data.CollectionViewAdv)">
+            <summary>
+            Initializes new instance of <see cref="T:Syncfusion.Data.VirtualRecordsList"/> class with specified <paramref name="source"/> and <paramref name="view"/>.
+            </summary>
+            <param name="source"></param>
+            <param name="view"></param>
         </member>
         <member name="M:Syncfusion.Data.VirtualRecordsList.OnInitialize">
             <summary>
@@ -6388,12 +6735,28 @@
             Clears the SourceList.
             </summary>
         </member>
+        <member name="M:Syncfusion.Data.VirtualRecordsList.SuspendUpdates">
+            <summary>
+            Overridden to avoid unwanted enumeration while looping for dispose.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordsList.ResumeUpdates">
+            <summary>
+            Overridden to avoid unwanted enumeration while looping for dispose.
+            </summary>
+        </member>
         <member name="M:Syncfusion.Data.VirtualRecordsList.GetRecordEntry(System.Int32,System.Object)">
             <summary>
             Method that populates internalList and return the RecordEntry with specified index.
             </summary>
             <param name="recordIndex">The recordIndex  to get the RecordEntry.</param>
+            <param name="data"></param>
             <returns>Returns the RecordEntry at specified recordIndex or based on data.</returns>                
+        </member>
+        <member name="P:Syncfusion.Data.VirtualRecordsList.IsInSuspend">
+            <summary>
+            Maintains a value that indicates whether the view update is suspended.
+            </summary>
         </member>
         <member name="T:Syncfusion.Data.VirtualRecordEntryEnumerator">
             <summary>
@@ -6401,11 +6764,16 @@
             </summary>
             <exclude/>
         </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryEnumerator.#ctor(Syncfusion.Data.VirtualRecordsList)">
+            <summary>
+            Initializes a instance of VirtualRecordEntryEnumerator with <paramref name="recordsList"/>.
+            </summary>
+            <param name="recordsList"></param>
+        </member>
         <member name="M:Syncfusion.Data.VirtualRecordEntryEnumerator.Dispose">
             <summary>
             Disposes all the resources used by the <see cref="T:Syncfusion.Data.VirtualRecordEntryEnumerator"/> class.
             </summary>
-            <param name="isDisposing">Indicates whether the call is from Dispose method or from a finalizer.</param>
         </member>
         <member name="M:Syncfusion.Data.VirtualRecordEntryEnumerator.Dispose(System.Boolean)">
             <summary>
@@ -6413,8 +6781,52 @@
             </summary>
             <param name="isDisposing">Indicates whether the call is from Dispose method or from a finalizer.</param>
         </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryEnumerator.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+            <value>
+            <b>true</b> if the enumerator was successfully advanced to the next element;
+            <b>false</b> if the enumerator has passed the end of the collection.
+            </value> 
+        </member>
+        <member name="M:Syncfusion.Data.VirtualRecordEntryEnumerator.Reset">
+             <summary>
+            Sets the enumerator to its initial position, which is before the first element in the collection.
+             </summary>
+        </member>
+        <member name="P:Syncfusion.Data.VirtualRecordEntryEnumerator.Current">
+            <summary>
+            Gets the element in the collection at the current position of the enumerator.
+            </summary>
+            <returns>The element in the collection at the current position of the enumerator.</returns>
+        </member>
         <member name="T:Syncfusion.Data.Extensions.DataSetExtensions">
             <exclude/>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.Predicate(System.String,System.String,System.Object,Syncfusion.Data.FilterType)">
+            <summary>
+            Creates the filter predicate for the given string with the filter type.
+            </summary>
+            <param name="thisString"></param>
+            <param name="property"></param>
+            <param name="value"></param>
+            <param name="filterType"></param>
+            <returns>The filter predicate for the given string with the filter type.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.AndPredicate(System.String)">
+            <summary>
+            Creates a <see cref="F:Syncfusion.Data.PredicateType.And"/> filter predicate for the specified string.
+            </summary>
+            <param name="thisString"></param>
+            <returns>The <see cref="F:Syncfusion.Data.PredicateType.And"/> filter predicate for the specified string.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.OrPredicate(System.String)">
+            <summary>
+            Creates a <see cref="F:Syncfusion.Data.PredicateType.Or"/> filter predicate for the specified string.
+            </summary>
+            <param name="thisString"></param>
+            <returns>The <see cref="F:Syncfusion.Data.PredicateType.Or"/> filter predicate for the specified string.</returns>
         </member>
         <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.NotStartsWith(System.String,System.Object)">
             <summary>
@@ -6440,6 +6852,38 @@
             <param name="filterValue">The filter string.</param>
             <returns>Returns the formatted filter string for <see cref="F:Syncfusion.Data.FilterType.NotContains"/> option.</returns>
         </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.OrderBy(System.String,System.String)">
+            <summary>
+            Sorts the elements of a sequence in ascending order according to a <paramref name="propertyName"/>.
+            </summary>
+            <param name="thisString"></param>
+            <param name="propertyName"></param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in ascending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.OrderByDescending(System.String,System.String)">
+            <summary>
+            Sorts the elements of a sequence in descending order according to a <paramref name="propertyName"/>.
+            </summary>
+            <param name="thisString"></param>
+            <param name="propertyName"></param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in descending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.ThenBy(System.String,System.String)">
+            <summary>
+            Performs a subsequent ordering of the elements in a sequence in ascending order according to a <paramref name="propertyName"/>.
+            </summary>
+            <param name="thisString"></param>
+            <param name="propertyName"></param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.ThenByDescending(System.String,System.String)">
+            <summary>
+            Performs a subsequent ordering of the elements in a sequence in descending order according to a <paramref name="propertyName"/>.
+            </summary>
+            <param name="thisString"></param>
+            <param name="propertyName"></param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in descending order according to a key.</returns>
+        </member>
         <member name="M:Syncfusion.Data.Extensions.DataSetExtensions.EscapeLikeValue(System.String)">
             <summary>
             Insert [ wildcard ] in LIKE Queries.
@@ -6457,6 +6901,12 @@
             <summary>
             This class responsible to reflect dynamic and expando object. Also maintains cache for faster reflection.
             </summary>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.#ctor">
+            <summary>
+            Initializes a new Instance of <see cref="T:Syncfusion.Dynamic.DynamicHelper"/> class.  
+            </summary>
         </member>
         <member name="M:Syncfusion.Dynamic.DynamicHelper.Dispose">
             <summary>
@@ -6469,11 +6919,405 @@
             </summary>
             <param name="isDisposing">Indicates whether the call is from Dispose method or from a finalizer.</param>
         </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.CheckIsDynamicObject(System.Type)">
+            <summary>
+            Checks whether the given type is dynamic object or not.
+            </summary>
+            <param name="type"></param>
+            <returns><b>true</b> if the given type is dynamic object,otherwise <b>false</b></returns>.
+        </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.ValidateProperty(System.Dynamic.IDynamicMetaObjectProvider,System.String)">
+            <summary>
+            Validates the given property with specified dynamic meta object.
+            </summary>
+            <param name="dynamicMetaObject"></param>
+            <param name="propName"></param>
+            <returns><b>true</b> if it is valid,otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.IsComplexCollection(System.Dynamic.IDynamicMetaObjectProvider,System.String)">
+            <summary>
+            Checks whether the given property in the dynamic meta object is complex collection or not.
+            </summary>
+            <param name="dynamicMetaObject"></param>
+            <param name="propName"></param>
+            <returns><b>true</b> if it is complex collection,otherwise <b>false</b></returns>
+        </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.IsPythonType(System.String)">
+            <summary>
+            Checks whether the given property name is in python type or not.
+            </summary>
+            <param name="propName"></param>
+            <returns><b>true</b> if the property name is in python type,otherwise<b> false</b></returns>.
+        </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.GetValue(System.Object,System.String)">
+            <summary>
+            Gets the value for the specified <paramref name="propName"/>.
+            </summary>
+            <param name="dynamicMetaObject"></param>
+            <param name="propName"></param>
+            <returns> <b>value</b> if property is valid, otherwise <b>null</b></returns>.
+        </member>
+        <member name="M:Syncfusion.Dynamic.DynamicHelper.SetValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets the value for the specified <paramref name="propName"/>.
+            </summary>
+            <param name="dynamicMetaObject"></param>
+            <param name="propName"></param>
+            <param name="value"></param>
+            <returns><b>true</b> if the property is valid,Otherwise <b>false</b></returns>
+        </member>
         <member name="T:Syncfusion.Dynamic.DynamicHelper.CallSiteMember">
             <exclude/>
         </member>
         <member name="T:Syncfusion.Data.Extensions.EnumerableExtensions">
             <exclude/>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.InvokeParallelExecution``1(System.Collections.IEnumerable,System.Predicate{System.Object})">
+            <summary>
+            Creates a <see cref="T:System.Linq.ParallelQuery"/> for the specified <paramref name="source"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The specified Source.</param>
+            <param name="func">The func that ensures the criteria to create a <see cref="T:System.Linq.ParallelQuery"/>.</param>
+            <returns>The <see cref="T:System.Linq.ParallelQuery"/> for the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Average``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int16}})">
+            <summary>
+             Gets the average of all <see cref="T:System.Double"/> values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the average to be calculated</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Double"/> values from the specified <paramref name="source"/></param>
+            <returns>The average of all <see cref="T:System.Double"/> values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Average``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int16})">
+            <summary>
+            Gets the average of all <see cref="T:System.Double"/> values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the average to be calculated</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Double"/> values from the specified <paramref name="source"/></param>
+            <returns>The average of all <see cref="T:System.Double"/> values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Average(System.Collections.Generic.IEnumerable{System.Int16})">
+            <summary>
+            Gets the average of all <see cref="T:System.Double"/> values from the specified <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified source for which the average to be calculated</param>
+            <returns>The average of all <see cref="T:System.Double"/> values from the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Average``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Nullable{System.Int16}}})">
+            <summary>
+            Gets the average of all <see cref="T:System.Double"/>? values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the average to be calculated.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Double"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The average of all <see cref="T:System.Double"/>? values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Average``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Nullable{System.Int16}})">
+            <summary>
+            Gets the average of all <see cref="T:System.Double"/>? values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the average to be calculated.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Double"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The average of all <see cref="T:System.Double"/>? values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Average(System.Collections.Generic.IEnumerable{System.Nullable{System.Int16}})">
+            <summary>
+            Gets the average of all <see cref="T:System.Double"/>? values from the specified <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified <paramref name="source"/> for which the average to be calculated.</param>
+            <returns>The average of all <see cref="T:System.Double"/>? values from the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Sum``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int16}})">
+            <summary>
+            Gets the sum of all <see cref="T:System.Int16"/> values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the sum to be calculated.</param>
+            <param name="selector">The function that retrieves <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</param>
+            <returns>The sum of all <see cref="T:System.Int16"/> values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Sum``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int16})">
+            <summary>
+            Gets the sum of all <see cref="T:System.Int16"/> values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the sum to be calculated.</param>
+            <param name="selector">The function that retrieves <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</param>
+            <returns>The sum of all <see cref="T:System.Int16"/> values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Sum(System.Collections.Generic.IEnumerable{System.Int16})">
+            <summary>
+            Gets the sum of all <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified source for which the sum to be calculated.</param>
+            <returns>The sum of all <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Sum``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Nullable{System.Int16}}})">
+            <summary>
+            Gets the sum of all <see cref="T:System.Int16"/>? values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the sum to be calculated.</param>
+            <param name="selector">The function that retrieves <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The sum of all <see cref="T:System.Int16"/>? values from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Sum``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Nullable{System.Int16}})">
+            <summary>
+            Gets the sum of all <see cref="T:System.Int16"/>? values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source for which the sum to be calculated.</param>
+            <param name="selector">The function that retrieves <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The sum of all <see cref="T:System.Int16"/>? values from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Sum(System.Collections.Generic.IEnumerable{System.Nullable{System.Int16}})">
+            <summary>
+            Gets the sum of all <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>
+            </summary>
+            <param name="source">The specified source for which the sum to be calculated.</param>
+            <returns>the sum of all <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/></returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Max``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int16}})">
+            <summary>
+            Gets the maximum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the maximum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</param>
+            <returns>The maximum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Max``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int16})">
+            <summary>
+            Gets the maximum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the maximum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</param>
+            <returns>The maximum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Max(System.Collections.Generic.IEnumerable{System.Int16})">
+            <summary>
+            Gets the maximum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified source from which the maximum value to be found.</param>
+            <returns>The maximum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Max``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Nullable{System.Int16}}})">
+            <summary>
+            Gets the maximum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the maximum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The maximum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Max``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Nullable{System.Int16}})">
+            <summary>
+            Gets the maximum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the maximum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The maximum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Max(System.Collections.Generic.IEnumerable{System.Nullable{System.Int16}})">
+            <summary>
+            Gets the maximum value of <see cref="T:System.Int16"/>? from the specified <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified source from which the maximum value to be found.</param>
+            <returns>The maximum value of <see cref="T:System.Int16"/>? from the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Min``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int16}})">
+            <summary>
+            Gets the minimum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Linq.IQueryable"/> source using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the minimum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</param>
+            <returns>The minimum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Linq.IQueryable"/> source using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Min``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int16})">
+            <summary>
+            Gets the minimum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the minimum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/> values from the specified <paramref name="source"/>.</param>
+            <returns>The minimum value of <see cref="T:System.Int16"/> from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Min(System.Collections.Generic.IEnumerable{System.Int16})">
+            <summary>
+            Gets the minimum of <see cref="T:System.Int16"/> value from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified source from which the minimum value to be found.</param>
+            <returns>The minimum of <see cref="T:System.Int16"/> value from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Min``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Nullable{System.Int16}}})">
+            <summary>
+            Gets the minimum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the minimum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The minimum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Linq.IQueryable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Min``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Nullable{System.Int16}})">
+            <summary>
+            Gets the minimum value of <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="source">The specified source from which the minimum value to be found.</param>
+            <param name="selector">The function that retrieves all <see cref="T:System.Int16"/>? values from the specified <paramref name="source"/>.</param>
+            <returns>The minimum of value <see cref="T:System.Int16"/>? from the specified <see cref="T:System.Collections.IEnumerable"/> <paramref name="source"/> using <paramref name="selector"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.Min(System.Collections.Generic.IEnumerable{System.Nullable{System.Int16}})">
+            <summary>
+            Gets the minimum value of <see cref="T:System.Int16"/>? from the specified <paramref name="source"/>.
+            </summary>
+            <param name="source">The specified source from which the minimum value to be found.</param>
+            <returns>The minimum value of <see cref="T:System.Int16"/>? from the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object})">
+            <summary>
+            Sorts the elements of a sequence in ascending order.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in ascending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.OrderByDescending``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object})">
+            <summary>
+            Sorts the elements of a sequence in descending order.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in descending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.ThenBy``1(System.Linq.IOrderedEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object})">
+            <summary>
+            Performs a subsequent ordering of the elements in a sequence in ascending order.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in ascending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.ThenByDescending``1(System.Linq.IOrderedEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object})">
+            <summary>
+            Performs a subsequent ordering of the elements in a sequence in descending order.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in descending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object},System.Collections.Generic.IComparer{System.Object})">
+            <summary>
+            Sorts the elements of a sequence in ascending order by using specified comparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <param name="comparer">The comparer.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in ascending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.OrderByDescending``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object},System.Collections.Generic.IComparer{System.Object})">
+            <summary>
+            Sorts the elements of a sequence in descending order by using specified comparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <param name="comparer">The comparer.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in descending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.ThenBy``1(System.Linq.IOrderedEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object},System.Collections.Generic.IComparer{System.Object})">
+            <summary>
+            Performs a subsequent ordering of the elements in a sequence in ascending order by using specified comparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <param name="comparer">The comparer.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in ascending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.ThenByDescending``1(System.Linq.IOrderedEnumerable{``0},System.String,System.Func{System.String,System.Object,System.Object},System.Collections.Generic.IComparer{System.Object})">
+            <summary>
+            Performs a subsequent ordering of the elements in a sequence in descending by using specified comparer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entities">The source.</param>
+            <param name="propertyName">The property name.</param>
+            <param name="getFunc">The get func.</param>
+            <param name="comparer">The comparer.</param>
+            <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1"/> whose elements are sorted in descending order according to a key.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.GetParallelQueryFor``1(System.Collections.IEnumerable)">
+            <summary>
+            Gets the parallel query of the specified <paramref name="source"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns>The parallel query of the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.GetParallelQuery(System.Collections.IEnumerable,System.Type)">
+            <summary>
+            Gets the parallel sequence of the specified <paramref name="source"/>.
+            </summary>
+            <param name="source"></param>
+            <param name="sourceType"></param>
+            <returns>the parallel sequence of the specified <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.GetElementType(System.Collections.IEnumerable)">
+            <summary>
+            Gets the Element type of the specified source.
+            </summary>
+            <param name="source"></param>
+            <returns>The Element type of the specified source.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.GetItemPropertyInfo(System.Collections.IEnumerable)">
+            <summary>
+            Gets the Item property informaation of the specified <paramref name="list"/>.
+            </summary>
+            <param name="list"></param>
+            <returns>The Item property informaation of the specified <paramref name="list"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.GetGenericSourceType(System.Collections.IEnumerable)">
+            <summary>
+            Gets the generic source type of the specified source.
+            </summary>
+            <param name="source"></param>
+            <returns>The generic source type of the specified source.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.GetItemType(System.Collections.IEnumerable,System.Boolean)">
+            <summary>
+            Gets the item type of the source.
+            </summary>
+            <param name="source"></param>
+            <param name="useRepresentativeItem"></param>
+            <returns> The item type of the source.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Gets the index of the specified <paramref name="value"/> in the <paramref name="source"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="value"></param>
+            <returns>the index of the specified <paramref name="value"/> in the <paramref name="source"/>.</returns>
         </member>
         <member name="T:Syncfusion.Data.Extensions.FunctionalExtensions">
             <summary>
@@ -6489,6 +7333,21 @@
             <param name="fullName">The full name.</param>
             <param name="targetType">Type of the target.</param>
             <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.CreateNew``1(System.Type)">
+            <summary>
+            Creates a instance of object for the specified <paramref name="type"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type">The type.</param>
+            <returns>The instance of object for the specified <paramref name="type"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.CreateNew(System.Type)">
+            <summary>
+            Creates a instance of dynamic object for the specified <paramref name="type"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The instance of dynamic object for the specified <paramref name="type"/>.</returns>
         </member>
         <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.ForEach``1(System.Collections.IEnumerable,System.Action{``0})">
             <summary>
@@ -6506,6 +7365,14 @@
             <param name="items">The items.</param>
             <param name="action">The action.</param>
         </member>
+        <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.ToList``1(System.Collections.IEnumerable)">
+            <summary>
+            Creates a new <see cref="T:System.Collections.Generic.List`1"/> from the specified <paramref name="items"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <returns>A new <see cref="T:System.Collections.Generic.List`1"/> from the specified <paramref name="items"/>.</returns>
+        </member>
         <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.IterateIndex``1(``0[],System.Action{System.Int32,``0})">
             <summary>
             Iterates the index.
@@ -6521,6 +7388,27 @@
             <typeparam name="T"></typeparam>
             <param name="items">The items.</param>
             <param name="action">The action.</param>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.IterateIndex``1(System.Collections.Generic.IEnumerable{``0},System.Action{System.Int32,``0},System.Int32)">
+            <summary>
+            Iterates the index
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <param name="action">The action.</param>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.Zip``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,``2})">
+            <summary>
+            Applies a specified function to the corresponding elements of two enumerable collection, producing a sequence of the results.
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="first">The first <see cref="T:System.Collections.IEnumerable"/> collection.</param>
+            <param name="second">The second <see cref="T:System.Collections.IEnumerable"/> collection.</param>
+            <param name="resultSelector">The function that retrieves the result from the <paramref name="first"/> and <paramref name="second"/> collections.</param>
+            <returns></returns>
         </member>
         <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.True``1">
             <summary>
@@ -6595,6 +7483,14 @@
             <param name="source">The SRC.</param>
             <param name="destination">The dest.</param>
         </member>
+        <member name="M:Syncfusion.Data.Extensions.FunctionalExtensions.ToObservableCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Gets the new <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> from the specified <paramref name="items"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <returns>The new <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> from the specified <paramref name="items"/>.</returns>
+        </member>
         <member name="T:Syncfusion.Data.FilterType">
             <summary>
             Specifies the filter type to be used in LINQ methods.
@@ -6658,16 +7554,6 @@
         <member name="F:Syncfusion.Data.FilterType.NotContains">
             <summary>
             Checks for <b>NotContains</b> on the string operands.
-            </summary>
-        </member>
-        <member name="F:Syncfusion.Data.FilterType.Undefined">
-            <summary>
-            Returns invalid type.
-            </summary>
-        </member>
-        <member name="F:Syncfusion.Data.FilterType.Between">
-            <summary>
-            Checks for Between two date on the operands.
             </summary>
         </member>
         <member name="T:Syncfusion.Data.FilterBehavior">
@@ -6866,6 +7752,13 @@
             <param name="type">The Type to be checked.</param>
             <returns>True if nested properties are found; False otherwise.</returns>
         </member>
+        <member name="M:Syncfusion.Data.Helper.NullableHelperInternal.IsIEnumerableType(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Checks whether the specified property's type is IEnumerableType or not.
+            </summary>
+            <param name="propertyInfo">The property information.</param>
+            <returns><b>true</b> if the specified property's type is IEnumerableType, otherwise <b>false</b>.</returns>
+        </member>
         <member name="M:Syncfusion.Data.Helper.NullableHelperInternal.ChangeType(System.Object,System.Type)">
             <summary>
             Use this method instead of Convert.ChangeType. Makes Convert.ChangeType work with Nullable types.
@@ -6882,6 +7775,20 @@
             <param name="type"></param>
             <param name="provider"></param>
             <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Data.Helper.NullableHelperInternal.IsNullableType(System.Type)">
+            <summary>
+            Checks whether the specified type is nullable type or not.
+            </summary>
+            <param name="nullableType">The type.</param>
+            <returns><b>true</b> if the specified type is nullable type, otherwise <b>false</b>. </returns>
+        </member>
+        <member name="M:Syncfusion.Data.Helper.NullableHelperInternal.GetNullableType(System.Type)">
+            <summary>
+            Gets the nullable types of the specified <paramref name="type"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The nullable types of the specified <paramref name="type"/>. </returns>
         </member>
         <member name="M:Syncfusion.Data.Helper.NullableHelperInternal.FixDBNullAsNull(System.Object,System.Type)">
             <summary>
@@ -7302,14 +8209,14 @@
         </member>
         <member name="M:Syncfusion.Data.Extensions.QueryableExtensions.OfType``2(System.Windows.FreezableCollection{``1})">
             <summary>
-            Gets the collection of the type parameter <typeparamref name="T"/> for the given collection of 
-            type parameter <typeparamref name="K"/>.
+            Gets the collection of the type parameter <typeparamref name="T2"/> for the given collection of 
+            type parameter <typeparamref name="T1"/>.
             </summary>
-            <typeparam name="T">The target type parameter.</typeparam>
-            <typeparam name="K">The given type parameter.</typeparam>
+            <typeparam name="T2">The target type parameter.</typeparam>
+            <typeparam name="T1">The given type parameter.</typeparam>
             <param name="items">The collection of items.</param>
-            <returns>The collection of the type parameter <typeparamref name="T"/> for the given collection of 
-            type parameter <typeparamref name="K"/>.</returns>
+            <returns>The collection of the type parameter <typeparamref name="T2"/> for the given collection of 
+            type parameter <typeparamref name="T1"/>.</returns>
         </member>
         <member name="M:Syncfusion.Data.Extensions.QueryableExtensions.OrderBy(System.Linq.IQueryable,System.String,System.Type)">
             <summary>
@@ -8436,7 +9343,7 @@
             <param name="sourceType">The type of the source.</param>
             <param name="sortFields">The list of sort descriptions.</param>
             <param name="sortComparers">The dictionary of sort comparers.</param>
-            <param name="GetExpressionFunc">The expression func.</param>
+            <param name="getExpressionFunc">The expression func.</param>
             <param name="properties">The array of properties.</param>
             <returns>The GroupResult enumerable collection based on the given values.</returns>
         </member>
@@ -8447,7 +9354,7 @@
             <param name="source">The IEnumerable source.</param>
             <param name="sourceType">The type of the source.</param>
             <param name="sortFields">The list of sort descriptions.</param>
-            <param name="GetExpressionFunc">The expression func.</param>
+            <param name="getExpressionFunc">The expression func.</param>
             <param name="properties">The array of properties.</param>
             <returns>The GroupResult enumerable collection based on the given values.</returns>
         </member>
@@ -8567,8 +9474,115 @@
         <member name="T:Syncfusion.Data.Extensions.ReflectionExtensions">
             <exclude/>
         </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.BaseType(System.Type)">
+            <summary>
+            Gets the type from which the current <paramref name="type"/> directly inherits.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The <paramref name="type"/> from which the current <paramref name="type"/> directly inherits, or null if the current <paramref name="type"/> represents the object class or an interface.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsPrimitive(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> is one of the primitive types or not.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the <paramref name="type"/> is one of the primitive types; otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsGenericType(System.Type)">
+            <summary>
+            Checks Whether the specified <paramref name="type"/> is generic type or not.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the specified <paramref name="type"/> is generic, otherwise <b>false</b>. </returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsInterface(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> is an interface; that is, not a class or a value type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the <paramref name="type"/> is an interface; otherwise <b>false</b>. </returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsAbstract(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> is abstract or not.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the specified <paramref name="type"/> is abstract, otherwise <b>false</b>. </returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsValueType(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> is value type or not.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the specified <paramref name="type"/> is value type, otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsEnum(System.Type)">
+            <summary>
+            Checks whether the specified <paramref name="type"/> represents an enumeration or not.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the specified <paramref name="type"/> represents an enumeration, otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.IsGenericTypeDefinition(System.Type)">
+            <summary>
+            Checks whether the specifed type is generic type definition or not.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><b>true</b> if the <paramref name="type"/> object represents a generic type definition, otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.GetIsDynamicBound(System.Collections.IEnumerable)">
+            <summary>
+            Gets the boolean value indicating whether the specified <paramref name="collection"/> is Dynamic Bound or Not.
+            </summary>
+            <param name="collection"></param>
+            <returns><b>True</b> if the <paramref name="collection"/> is dynamic bound,otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.ReflectionExtensions.GetItemProperties(System.Collections.IEnumerable,System.Boolean@)">
+            <summary>
+            Gets the item properties for the specified <paramref name="dataSource"/>.
+            </summary>
+            <param name="dataSource"></param>
+            <param name="itemPropertiesSet"></param>
+            <returns>The item properties of the specified <paramref name="dataSource"/>.</returns>
+        </member>
         <member name="T:Syncfusion.Data.Extensions.StringExtensions">
             <exclude/>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.StringExtensions.FormatByName(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Formats the given string values.
+            </summary>
+            <param name="format"></param>
+            <param name="values"></param>
+            <returns>The formatted string values.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.StringExtensions.FormatByName(System.String,System.IFormatProvider,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Formats the given string values using format provider.
+            </summary>
+            <param name="format"></param>
+            <param name="provider"></param>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.StringExtensions.FormatByName(System.String,System.IFormatProvider,System.Func{System.String,System.Object})">
+            <summary>
+            Formats the given string values using format provider.
+            </summary>
+            <param name="format"></param>
+            <param name="provider"></param>
+            <param name="valueProvider"></param>
+            <returns>The string formatted according to <paramref name="format"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Data.Extensions.StringExtensions.ParseFormat(System.String,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.ComponentModel.PropertyDescriptor},System.String@,System.ComponentModel.PropertyDescriptor[]@)">
+            <summary>
+            Parses the format of the given string.
+            </summary>
+            <param name="value"></param>
+            <param name="raiseException"></param>
+            <param name="propertyDescriptionCollection"></param>
+            <param name="result"></param>
+            <param name="propertyDescriptor"></param>
         </member>
     </members>
 </doc>

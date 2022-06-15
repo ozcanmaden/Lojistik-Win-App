@@ -1222,6 +1222,1395 @@
             GET huffman tree for encoding and decoding distances.
             </summary>
         </member>
+        <member name="M:Syncfusion.Office.ArabicShapeRenderer.Dispose">
+            <summary>
+            Dispose a ArabicShapeRenderer instance.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Office.TextSplitter">
+            <summary>
+            Represent a text splitter class and it can be used to split the input text based on the FontScriptType.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsEastAsiaScript(Syncfusion.Office.FontScriptType)">
+            <summary>
+            Check whether specified script is EastAsia script or not.
+            </summary>
+            <param name="scriptType">Represent a FontScriptType to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.GetFontScriptType(System.Char)">
+            <summary>
+            Gets a FontScriptType of input character.
+            </summary>
+            <param name="inputCharacter">Represent a input character to check.</param>
+            <returns>Returns a FontScriptType of input character.</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.SplitTextByFontScriptType(System.String,System.Collections.Generic.List{Syncfusion.Office.FontScriptType}@)">
+            <summary>
+            Split the input text based on the FontScriptType.
+            </summary>
+            <param name="inputText">Represent the input text to split.</param>
+            <param name="fontScriptTypes">Represent the FontScriptType of a splitted text.</param>
+            <returns>Retruns the array of splitted text.</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.SplitTextByConsecutiveLtrAndRtl(System.String,System.Boolean,System.Boolean,System.Collections.Generic.List{Syncfusion.Office.CharacterRangeType}@,System.Nullable{System.Boolean}@,System.Boolean@)">
+            <summary>
+            Split the text by consicutive LTR and RTL
+            </summary>
+            <param name="text">Represent the source text to split</param>
+            <param name="isTextBidi">Represent text range bidi</param>
+            <param name="isRTLLang">Represent bidi language of text range</param>
+            <param name="characterRangeTypes">Represent characterRangeType collection</param>
+            <param name="isPrevLTRText">Represent whether previous text is LTR or not</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsRTLChar(System.Char)">
+            <summary>
+            To check whether the specified character is RTL character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is RTL character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsNonWordSplitCharacter(System.String)">
+            <summary>
+            To check whether the specified string is non-word split character (%$#).
+            </summary>
+            <param name="character">Specify the string to check</param>
+            <returns>Return true if the string is non-word split character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsNumberNonReversingCharacter(System.String,System.Boolean)">
+            <summary>
+            To check whether the specified character is act as non-word split character or not.
+            </summary>
+            <param name="character">Specify the character to check</param>
+            <param name="isTextBidi">Specify the text range bidi value</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsWordSplitChar(System.Char)">
+            <summary>
+            To check whether the specified character is word split character ([/;) or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is word split character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsArabicChar(System.Char)">
+            <summary>
+            To check whether the specified character is Arabic character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is Arabic character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsHebrewChar(System.Char)">
+            <summary>
+            To check whether the specified character is Hebrew character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is Hebrew character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsHindiChar(System.Char)">
+            <summary>
+            To check whether the specified character is Hindi character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is Hindi character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsKoreanChar(System.Char)">
+            <summary>
+            To check whether the specified character is Korean character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is Korean character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsJapanese(System.Char)">
+            <summary>
+            To check whether the specified character is Japanese character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is Japanese character</returns>
+        </member>
+        <member name="M:Syncfusion.Office.TextSplitter.IsChineseChar(System.Char)">
+            <summary>
+            To check whether the specified character is Chinese character or not.
+            </summary>
+            <param name="character">Specify the character</param>
+            <returns>Return true if the specified character is Chinese character</returns>
+        </member>
+        <member name="T:Syncfusion.Office.FallbackFont">
+            <summary>
+            FallbackFont class used to represent a start, end Unicode ranges and font names of fall back font.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Office.FallbackFont.#ctor(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Create a instance of FallbackFont class.
+            </summary>
+            <param name=" startUnicodeRange ">Represent a start Unicode range of fall back font.</param>
+            <param name=" endUnicodeRange ">Represent a end Unicode range of fall back font.</param>
+            <param name="fontNames">Represent a fall back font name or names (split by comma).</param>
+        </member>
+        <member name="M:Syncfusion.Office.FallbackFont.IsWithInRange(System.String)">
+            <summary>
+            Check whether any character of input text is with in the start and end Unicode ranges.
+            </summary>
+            <param name="inputText">Represent a input text to check.</param>
+            <returns>Returns true, if any character of input text is in-between start and end Unicode range; Otherwise false.</returns>
+        </member>
+        <member name="P:Syncfusion.Office.FallbackFont.StartUnicodeRange">
+            <summary>
+            Gets or Sets a Unicode range of start character which use a fall back font.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.FallbackFont.EndUnicodeRange">
+            <summary>
+            Gets or Sets a Unicode range of end character which use a fall back font.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.FallbackFont.FontNames">
+            <summary>
+            Gets or Sets a fall back font names (split by comma).
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Office.LocaleIDs">
+            <summary>
+            Specifies the local ID's.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.af_ZA">
+            <summary>
+            African.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sq_AL">
+            <summary>
+            Albanian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.am_ET">
+            <summary>
+            Amharic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.gsw_FR">
+            <summary>
+            Alsatian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_DZ">
+            <summary>
+            Arabic Algerian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_BH">
+            <summary>
+            Arabic Bahraini.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_EG">
+            <summary>
+            Arabic Egyptian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_IQ">
+            <summary>
+            Arabic Iraqi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_JO">
+            <summary>
+            Arabic Jordanian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_KW">
+            <summary>
+            Arabic Kuwaiti.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_LB">
+            <summary>
+            Arabic Lebanese.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_LY">
+            <summary>
+            Arabic Libyan.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_MA">
+            <summary>
+            Arabic Moroccan.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_OM">
+            <summary>
+            Arabic Omani.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_QA">
+            <summary>
+            Arabic Qatari.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_SA">
+            <summary>
+            Arabic Saudi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_SY">
+            <summary>
+            Arabic Syrian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_TN">
+            <summary>
+            Arabic Tunisian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_AE">
+            <summary>
+            Arabic United Arab Emirates.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ar_YE">
+            <summary>
+            Arabic Yemeni.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.hy_AM">
+            <summary>
+            Armenian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.as_IN">
+            <summary>
+            Assamese.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.az_Cyrl_AZ">
+            <summary>
+            Azeri Cyrillic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.az_Latn_AZ">
+            <summary>
+            Azeri Latin.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ba_RU">
+            <summary>
+            Bashkir.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.eu_ES">
+            <summary>
+            Basque.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.be_BY">
+            <summary>
+            Belarusian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bn_BD">
+            <summary>
+            Bengali (Bangladesh).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bn_IN">
+            <summary>
+            Bengali (India).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bs_Cyrl_BA">
+            <summary>
+            Bosnian (Cyrillic, Bosnia and Herzegovina).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bs_Latn_BA">
+            <summary>
+            Bosnian (Bosnia/Herzegovina).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bg_BG">
+            <summary>
+            Bulgarian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.br_FR">
+            <summary>
+            Breton.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.my_MM">
+            <summary>
+            Burmese.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ca_ES">
+            <summary>
+            Catalan.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.chr_US">
+            <summary>
+            Cherokee - United States.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.zh_HK">
+            <summary>
+            Chinese - Hong Kong SAR.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.zh_MO">
+            <summary>
+            Chinese - Macao SAR.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.zh_CN">
+            <summary>
+            Chinese - People's Republic of China.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.zh_SG">
+            <summary>
+            Chinese - Singapore.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.zh_TW">
+            <summary>
+            Chinese - Taiwan.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.co_FR">
+            <summary>
+            Corsican.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.hr_BA">
+            <summary>
+            Croatian (Bosnia/Herzegovina).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.hr_HR">
+            <summary>
+            Croatian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.cs_CZ">
+            <summary>
+            Czech.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.da_DK">
+            <summary>
+            Danish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.prs_AF">
+            <summary>
+            Dari.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.dv_MV">
+            <summary>
+            Divehi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.nl_BE">
+            <summary>
+            Dutch - Belgium.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.nl_NL">
+            <summary>
+            Dutch - Netherlands.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bin_NG">
+            <summary>
+            Edo.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.et_EE">
+            <summary>
+            Estonian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_AU">
+            <summary>
+            English - Australia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_BZ">
+            <summary>
+            English - Belize.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_CA">
+            <summary>
+            English - Canada.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_029">
+            <summary>
+            English - Caribbean.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_HK">
+            <summary>
+            English - Hong Kong SAR.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_IN">
+            <summary>
+            English - India.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_ID">
+            <summary>
+            English - Indonesia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_IE">
+            <summary>
+            English - Ireland.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_JM">
+            <summary>
+            English - Jamaica.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_MY">
+            <summary>
+            English - Malaysia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_NZ">
+            <summary>
+            English - New Zealand.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_PH">
+            <summary>
+            English - Philippines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_SG">
+            <summary>
+            English - Singapore.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_ZA">
+            <summary>
+            English - South Africa.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_TT">
+            <summary>
+            English - Trinidad.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_GB">
+            <summary>
+            English - United Kingdom.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_US">
+            <summary>
+            English - United States.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.en_ZW">
+            <summary>
+            English - Zimbabwe.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fo_FO">
+            <summary>
+            Faroese.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fil_PH">
+            <summary>
+            Filipino.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fi_FI">
+            <summary>
+            Finnish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_BE">
+            <summary>
+            French - Belgium.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_CM">
+            <summary>
+            French - Cameroon.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_CA">
+            <summary>
+            French - Canada.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_CD">
+            <summary>
+            French - Democratic Rep. of Congo.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_CI">
+            <summary>
+            French - Cote d'Ivoire.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_FR">
+            <summary>
+            French - France.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_HT">
+            <summary>
+            French - Haiti.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_LU">
+            <summary>
+            French - Luxembourg.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_ML">
+            <summary>
+            French - Mali.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_MC">
+            <summary>
+            French - Monaco.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_MA">
+            <summary>
+            French - Morocco.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_RE">
+            <summary>
+            French - Reunion.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_SN">
+            <summary>
+            French - Senegal.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_CH">
+            <summary>
+            French - Switzerland.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fr_fr_WINDIES">
+            <summary>
+            French - West Indies.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fy_NL">
+            <summary>
+            Frisian - Netherlands.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ff_NG">
+            <summary>
+            Fulfulde - Nigeria.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.gd_GB">
+            <summary>
+            Scottish Gaelic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.gl_ES">
+            <summary>
+            Galician.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ka_GE">
+            <summary>
+            Georgian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.de_AT">
+            <summary>
+            German - Austria.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.de_DE">
+            <summary>
+            German - Germany.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.de_LI">
+            <summary>
+            German - Liechtenstein.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.de_LU">
+            <summary>
+            German - Luxembourg.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.de_CH">
+            <summary>
+            German - Switzerland.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.el_GR">
+            <summary>
+            Greek.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.gn_PY">
+            <summary>
+            Guarani - Paraguay.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.gu_IN">
+            <summary>
+            Gujarati.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.kl_GL">
+            <summary>
+            Greenlandic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ha_Latn_NG">
+            <summary>
+            Hausa - Nigeria.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.haw_US">
+            <summary>
+            Hawaiian - United States.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.he_IL">
+            <summary>
+            Hebrew.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.hi_IN">
+            <summary>
+            Hindi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.hu_HU">
+            <summary>
+            Hungarian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ibb_NG">
+            <summary>
+            Ibibio - Nigeria.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.is_IS">
+            <summary>
+            Icelandic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ig_NG">
+            <summary>
+            Igbo - Nigeria.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.id_ID">
+            <summary>
+            Indonesian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.iu_Latn_CA">
+            <summary>
+            Inuktitut (Latin, Canada).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.iu_Cans_CA">
+            <summary>
+            Inuktitut.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.it_IT">
+            <summary>
+            Italian - Italy.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.it_CH">
+            <summary>
+            Italian - Switzerland.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ga_IE">
+            <summary>
+            Irish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.xh_ZA">
+            <summary>
+            Xhosa.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.zu_ZA">
+            <summary>
+            Zulu.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.kn_IN">
+            <summary>
+            Kannada (India).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.kr_NG">
+            <summary>
+            Kanuri - Nigeria.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ks_Deva">
+            <summary>
+            Kashmiri.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ks_Arab">
+            <summary>
+            Kashmiri (Arabic).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.kk_KZ">
+            <summary>
+            Kazakh.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.km_KH">
+            <summary>
+            Khmer.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.kok_IN">
+            <summary>
+            Konkani.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ko_KR">
+            <summary>
+            Korean.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ky_KG">
+            <summary>
+            Kyrgyz (Cyrillic).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.qut_GT">
+            <summary>
+            K'iche.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.rw_RW">
+            <summary>
+            Kinyarwanda.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.lo_LA">
+            <summary>
+            Lao.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.la_Latn">
+            <summary>
+            Latin.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.lv_LV">
+            <summary>
+            Latvian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.lt_LT">
+            <summary>
+            Lithuanian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.dsb_DE">
+            <summary>
+            Lower Sorbian (Germany).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.lb_LU">
+            <summary>
+            Luxembourgish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mk_MK">
+            <summary>
+            FYRO Macedonian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ms_BN">
+            <summary>
+            Malay - Brunei Darussalam.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ms_MY">
+            <summary>
+            Malay - Malaysia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ml_IN">
+            <summary>
+            Malayalam.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mt_MT">
+            <summary>
+            Maltese.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mni_IN">
+            <summary>
+            Manipuri.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mi_NZ">
+            <summary>
+            Maori - New Zealand.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mr_IN">
+            <summary>
+            Marathi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.arn_CL">
+            <summary>
+            Mapudungun.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mn_MN">
+            <summary>
+            Mongolian (Cyrillic).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.mn_Mong_CN">
+            <summary>
+            Mongolian (Mongolian).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ne_NP">
+            <summary>
+            Nepali.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ne_IN">
+            <summary>
+            Nepali - India.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.nb_NO">
+            <summary>
+            Norwegian (Bokml).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.nn_NO">
+            <summary>
+            Norwegian (Nynorsk).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.oc_FR">
+            <summary>
+            Occitan.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.or_IN">
+            <summary>
+            Oriya.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.om_Ethi_ET">
+            <summary>
+            Oromo.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.pap_AN">
+            <summary>
+            Papiamentu.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ps_AF">
+            <summary>
+            Pashto.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.fa_IR">
+            <summary>
+            Farsi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.pl_PL">
+            <summary>
+            Polish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.pt_BR">
+            <summary>
+            Portuguese - Brazil.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.pt_PT">
+            <summary>
+            Portuguese - Portugal.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.pa_IN">
+            <summary>
+            Punjabi (India).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.pa_PK">
+            <summary>
+            Punjabi (Pakistan).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.quz_BO">
+            <summary>
+            Quecha - Bolivia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.guz_EC">
+            <summary>
+            Quecha - Ecuador.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.guz_PE">
+            <summary>
+            Quecha - Peru.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ro_RO">
+            <summary>
+            Romanian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ro_MO">
+            <summary>
+            Romanian - Moldava.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.rm_CH">
+            <summary>
+            Rhaeto-Romanic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ru_RU">
+            <summary>
+            Russian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ru_MO">
+            <summary>
+            Russian - Moldava.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.smn_FI">
+            <summary>
+            Sami, Inari (Finland).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.smj_NO">
+            <summary>
+            Sami, Lule (Norway).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.smj_SE">
+            <summary>
+            Sami, Lule (Sweden).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.se_FI">
+            <summary>
+            Sami, Northern (Finland).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.se_NO">
+            <summary>
+            Sami (Lappish).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.se_SE">
+            <summary>
+            Sami, Northern (Sweden).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sms_FI">
+            <summary>
+            Sami, Skolt (Finland).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sma_NO">
+            <summary>
+            Sami, Southern (Norway).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sma_SE">
+            <summary>
+            Sami, Southern (Sweden).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sa_IN">
+            <summary>
+            Sanskrit - India.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sr_Cyrl_BA">
+            <summary>
+            Serbian (Cyrillic, Bosnia and Herzegovina).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sr_Cyrl_CS">
+            <summary>
+            Serbian (Cyrillic).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sr_Latn_BA">
+            <summary>
+            Serbian (Latin, Bosnia and Herzegovina).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sr_Latn_CS">
+            <summary>
+            Serbian (Latin, Serbia and Montenegro (Former)).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.nso_ZA">
+            <summary>
+            Serbian (Latin).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tn_ZA">
+            <summary>
+            Tswana.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sd_Arab_PK">
+            <summary>
+            Sindhi - Pakistan.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sd_Deva_IN">
+            <summary>
+            Sindhi - India.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.si_LK">
+            <summary>
+            Sinhalese - Sri Lanka.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sk_SK">
+            <summary>
+            Slovak.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sl_SI">
+            <summary>
+            Slovenian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.so_SO">
+            <summary>
+            Somali.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_AR">
+            <summary>
+            Spanish - Argentina.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_BO">
+            <summary>
+            Spanish - Bolivia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_CL">
+            <summary>
+            Spanish - Chile.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_CO">
+            <summary>
+            Spanish - Colombia.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_CR">
+            <summary>
+            Spanish - Costa Rica.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_DO">
+            <summary>
+            Spanish - Dominican Republic.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_EC">
+            <summary>
+            Spanish - Ecuador.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_SV">
+            <summary>
+            Spanish - El Salvador.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_GT">
+            <summary>
+            Spanish - Guatemala.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_HN">
+            <summary>
+            Spanish - Honduras.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_MX">
+            <summary>
+            Spanish - Mexico.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_NI">
+            <summary>
+            Spanish - Nicaragua.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_PA">
+            <summary>
+            Spanish - Panama.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_PY">
+            <summary>
+            Spanish - Paraguay.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_PE">
+            <summary>
+            Spanish - Peru.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_PR">
+            <summary>
+            Spanish - Puerto Rico.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_ES">
+            <summary>
+            Spanish - International Sort.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_ES_tradnl">
+            <summary>
+            Spanish - Spain (Traditional Sort).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_US">
+            <summary>
+            Spanish - United States.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_UY">
+            <summary>
+            Spanish - Uruguay.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.es_VE">
+            <summary>
+            Spanish - Venezuela.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.st_ZA">
+            <summary>
+            Sutu.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sw_KE">
+            <summary>
+            Swahili.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sv_FI">
+            <summary>
+            Swedish - Finland.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sv_SE">
+            <summary>
+            Swedish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.syr_SY">
+            <summary>
+            Syriac.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tg_Cyrl_TJ">
+            <summary>
+            Tajik.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tzm_Arab_MA">
+            <summary>
+            Tamazight.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tzm_Latn_DZ">
+            <summary>
+            Tamazight (Latin).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ta_IN">
+            <summary>
+            Tamil.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tt_RU">
+            <summary>
+            Tatar.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.te_IN">
+            <summary>
+            Telugu.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.th_TH">
+            <summary>
+            Thai.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.bo_CN">
+            <summary>
+            Tibetan (PRC).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ti_ER">
+            <summary>
+            Tigrigna (Eritrea).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ti_ET">
+            <summary>
+            Tigrigna (Ethiopia).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ts_ZA">
+            <summary>
+            Tsonga.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tr_TR">
+            <summary>
+            Turkish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.tk_TM">
+            <summary>
+            Turkmen.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ug_CN">
+            <summary>
+            Uighur - China.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.uk_UA">
+            <summary>
+            Ukrainian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.hsb_DE">
+            <summary>
+            Sorbian.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ur_PK">
+            <summary>
+            Urdu.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.uz_Cyrl_UZ">
+            <summary>
+            Uzbek (Cyrillic).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.uz_Latn_UZ">
+            <summary>
+            Uzbek (Latin).
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ve_ZA">
+            <summary>
+            Venda.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.vi_VN">
+            <summary>
+            Vietnamese.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.cy_GB">
+            <summary>
+            Welsh.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.wo_SN">
+            <summary>
+            Wolof.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.sah_RU">
+            <summary>
+            Yakut.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ii_CN">
+            <summary>
+            Yi.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.yi_Hebr">
+            <summary>
+            Yiddish.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.yo_NG">
+            <summary>
+            Yoruba.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.LocaleIDs.ja_JP">
+            <summary>
+            Japanese.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Office.FontScriptType">
+            <summary>
+            Used to represent the font script type of the text.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Office.CharacterRangeType">
+            <summary>
+            Used to represent the character range type of the text.
+            </summary>
+        </member>
         <member name="T:Syncfusion.Office.OwnerHolder">
             <summary>
             Provides the base implementation for all the classes with holder behavior.
@@ -2408,6 +3797,19 @@
             the owner <see cref="T:Syncfusion.Office.OfficeMathFunctionBase"/> instance.
             </summary>
             <param name="owner">The owner.</param>
+        </member>
+        <member name="M:Syncfusion.Office.OfficeMathFunctionBase.GetDefaultControlProperties">
+            <summary>
+            Get default control properties of function.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.OfficeMathFunctionBase.GetBaseMathParagraph(Syncfusion.Office.OfficeMathFunctionBase)">
+            <summary>
+            Get math paragraph
+            </summary>
+            <param name="mathFunction"></param>
+            <returns></returns>
         </member>
         <member name="P:Syncfusion.Office.OfficeMathFunctionBase.Type">
             <summary>
@@ -4571,6 +5973,11 @@
             Gets or sets whether format is default.
             </summary>
         </member>
+        <member name="P:Syncfusion.Office.OfficeMathParagraph.DefaultMathCharacterFormat">
+            <summary>
+            Represents the default character format for functions in mathematical equation
+            </summary>
+        </member>
         <member name="T:Syncfusion.Office.OfficeMathRunElement">
             <summary>
             Represents <see cref="T:Syncfusion.Office.OfficeMathRunElement"/> object that provides the base implementation for all <see cref="T:Syncfusion.Office.IOfficeMathParagraph"/> items.  
@@ -5388,6 +6795,14 @@
             </summary>
             <param name="items"></param>
         </member>
+        <member name="M:Syncfusion.Office.OfficeMathBaseCollection.CloneItemsTo(Syncfusion.Office.OfficeMathBaseCollection,System.Int32,System.Int32)">
+            <summary>
+            Clone the items in collection from start index to end index
+            </summary>
+            <param name="items"></param>
+            <param name="startIndex">Represent the start index to clone from.</param>
+            <param name="endIndex">Represent the end index to clone until.</param>
+        </member>
         <member name="M:Syncfusion.Office.OfficeMathBaseCollection.Close">
             <summary>
             Clears the object.
@@ -6100,6 +7515,11 @@
             Releases all resources used by the object.
             </summary>
         </member>
+        <member name="P:Syncfusion.Office.IOfficeRun.OwnerMathRunElement">
+            <summary>
+            Reserved for internal use.
+            </summary>
+        </member>
         <member name="T:Syncfusion.Compression.Utils">
             <summary>
             Utility Class
@@ -6353,6 +7773,121 @@
             Gets the list of elements in the instance.
             </summary>
         </member>
+        <member name="T:Syncfusion.Office.MetaProperties">
+            <summary>
+            Represents a collection of properties describing the metadata stored in a document.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperties.FindByName(System.String)">
+            <summary>
+             Finds a metadata property in the collection with specified display name.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperties.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.Office.MetaProperties"/> class with the specified 
+            <see cref="T:Syncfusion.Office.MetaProperties"/> instance.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperties.Add(Syncfusion.Office.MetaProperty)">
+            <summary>
+            Adds the specified Metaproperty.
+            </summary>
+            <param name="metaProperty">The metaProperty.</param>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperties.Remove(Syncfusion.Office.MetaProperty)">
+            <summary>
+            Removes the specified MetaProperty.
+            </summary>
+            <param name="MetaProperty">The metaProperty.</param>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperties.Close">
+            <summary>
+            Clears the object.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperties.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Syncfusion.Office.MetaProperty"/> at the specified index.
+            </summary>
+            <param name="index">The <b>integer </b>that represents the position of the metadata property in the document to get. </param>
+            <value>The <see cref="T:Syncfusion.Office.MetaProperty"/> at the specified index.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">The index is not valid in the <see cref="T:Syncfusion.Office.MetaProperties"/></exception>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperties.Count">
+            <summary>
+            Gets the number of items in the collection.
+            </summary>
+            <value>The <b>integer</b> that specifies the count of items.</value>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperties.InnerList">
+            <summary>
+            Gets the inner list.
+            </summary>
+            <value>The inner list.</value>
+        </member>
+        <member name="T:Syncfusion.Office.MetaPropertyType">
+            <summary>
+            Specifies the metadata property type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Unknown">
+            <summary>
+            Represents an unknown value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Boolean">
+            <summary>
+            Represents a Boolean value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Choice">
+            <summary>
+            Represents a value from one or more choices.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Currency">
+            <summary>
+            Represents a Currency value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.DateTime">
+            <summary>
+            Represents a DateTime value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Lookup">
+            <summary>
+            Represents a value used to lookup another value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Note">
+            <summary>
+            Represents a value of one or more sentences.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Number">
+            <summary>
+            Represents a generic number data type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Text">
+            <summary>
+            Represents a Text value.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.Url">
+            <summary>
+            Represents a URL.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Office.MetaPropertyType.User">
+            <summary>
+            Represents a category of user.
+            </summary>
+        </member>
         <member name="T:Syncfusion.Office.SystemKind">
             <summary>
             Specifies the type of system
@@ -6531,6 +8066,144 @@
             <summary>
             Contains the Vba project module collection.
             </summary>
+        </member>
+        <member name="T:Syncfusion.Office.MetaProperty">
+            <summary>
+            Represents a single property in a collection of properties describing the metadata stored in a document.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.MapContentTypeProperties(System.String,System.String,System.String,System.String,System.String,System.Object,Syncfusion.Office.MetaProperty)">
+            <summary>
+            Map the content type meta data properties.
+            </summary>
+            <param name="id"></param>
+            <param name="nillable"></param>
+            <param name="isreadonly"></param>
+            <param name="displayName"></param>
+            <param name="type"></param>
+            <param name="value"></param>
+            <param name="metaProperty"></param>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ParseMetaProperty(System.Xml.XmlNodeList,System.String,System.Object,Syncfusion.Office.MetaProperty)">
+            <summary>
+            Parse the meta data property value.
+            </summary>
+            <param name="nodes"></param>
+            <param name="id"></param>
+            <param name="value"></param>
+            <param name="property"></param>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ParseMetaProperty(System.Xml.XmlElement,System.Xml.XmlDocument)">
+            <summary>
+            Parse meta properties from contentTypeSchema.
+            </summary>
+            <param name="contentTypeSchema"></param>
+            <param name="contentTypeSchemaProperties"></param>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ChecksValidMetaValue(System.Object@)">
+            <summary>
+            Checks whether the user setting value is valid or not.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.GetValueAsPerMetaPropertyType(Syncfusion.Office.MetaPropertyType,System.Object)">
+            <summary>
+            Gets the proper value based on the metaproperty data type. 
+            </summary>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.SetValueInXmlDocument">
+            <summary>
+            Set value to the XmlDocument element after changing of the MetaProperty data.  
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateBooleanMetaType(System.Object@)">
+            <summary>
+            Validate the value of boolean metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateLookupMetaType(System.Object@)">
+            <summary>
+            Validate the value of lookup metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateUserMetaType(System.Object@)">
+            <summary>
+            Validate the value of user metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateUrlMetaType(System.Object@)">
+            <summary>
+            Validate the value of url metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateDateTimeMetaType(System.Object@)">
+            <summary>
+            Validate the value of datetime metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateNumberAndCurrencyMetaType(System.Object@)">
+            <summary>
+            Validate the value of number and currency metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Office.MetaProperty.ValidateTextNoteChoiceUnknownMetaType(System.Object@)">
+            <summary>
+            Validate the value of text,note,choice,unknown metaproperty type.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.Id">
+            <summary>
+            Gets the ID of the MetaProperty object. 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.IsReadOnly">
+            <summary>
+            Gets a Boolean value that specifies whether the meta property is read-only
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.IsRequired">
+            <summary>
+            Gets a Boolean value that specifies whether the meta property is required.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.DisplayName">
+            <summary>
+            Gets the name of the MetaProperty object. 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.Type">
+            <summary>
+            Gets the data type of the MetaProperty object. 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.Value">
+            <summary>
+            Gets or sets the value of metadata property.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Office.MetaProperty.Parent">
+            <summary>
+            Gets the owner of the MetaProperty.
+            </summary>
+            <value>The <see cref="T:Syncfusion.Office.MetaProperties"/> that specifies the owner.</value>
         </member>
         <member name="T:Syncfusion.Office.ReferenceControlRecord">
             <summary>
@@ -8344,7 +10017,7 @@
             ZipCrc32
             </summary>
         </member>
-        <member name="M:Syncfusion.Compression.Zip.ZipCrypto.#ctor(System.IO.Stream,System.String)">
+        <member name="M:Syncfusion.Compression.Zip.ZipCrypto.#ctor(System.IO.Stream,System.String,System.UInt32)">
             <summary>
             Constructor initializes Data stream and password
             </summary>
