@@ -1,0 +1,12 @@
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\KamyonTakip.Data.dll.config
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\KamyonTakip.Data.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\KamyonTakip.Data.pdb
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\EntityFramework.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\EntityFramework.xml
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\obj\Debug\KamyonTakip.Data.csproj.CoreCompileInputs.cache
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\obj\Debug\KamyonTakip.Data.csproj.CopyComplete
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\obj\Debug\KamyonTakip.Data.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\obj\Debug\KamyonTakip.Data.pdb
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Data\obj\Debug\KamyonTakip.Data.csprojAssemblyReference.cache

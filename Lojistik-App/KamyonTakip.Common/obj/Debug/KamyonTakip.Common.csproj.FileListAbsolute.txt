@@ -1,0 +1,15 @@
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\bin\Debug\KamyonTakip.Common.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\bin\Debug\KamyonTakip.Common.pdb
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\bin\Debug\Notifications.Wpf.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.csproj.CoreCompileInputs.cache
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.csproj.CopyComplete
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.dll
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.pdb
+D:\GitHub\homeandwork\SyncfusionGo\KamyonTakip\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\bin\Debug\KamyonTakip.Common.dll
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\bin\Debug\KamyonTakip.Common.pdb
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.dll
+C:\Users\Admin\Documents\GitHub\Lojistik-Win-App\Lojistik-App\KamyonTakip.Common\obj\Debug\KamyonTakip.Common.pdb

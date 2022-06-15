@@ -1,0 +1,251 @@
+﻿<UserControl x:Class="KamyonTakip.Main.View.TakipUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KamyonTakip.Main.View"
+             xmlns:viewmodel="clr-namespace:KamyonTakip.Main.ViewModel"
+             xmlns:form="clr-namespace:KamyonTakip.Component.Form;assembly=KamyonTakip.Component"
+             xmlns:enums="clr-namespace:KamyonTakip.Data.Model;assembly=KamyonTakip.Data"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Name="TakipSettings">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="DurumEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:AracDurum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="GuzergahEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:Guzergahlar"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <viewmodel:TakipViewModel x:Name="vm"/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20" VerticalAlignment="Center">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="Black" Geometry="M640 264v-16c0-8.84-7.16-16-16-16H344v-40h72c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32H224c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h72v40H16c-8.84 0-16 7.16-16 16v16c0 8.84 7.16 16 16 16h104v40H64c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h160c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32h-56v-40h304v40h-56c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h160c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32h-56v-40h104c8.84 0 16-7.16 16-16zM256 128V64h128v64H256zm-64 320H96v-64h96v64zm352 0h-96v-64h96v64z" />
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Hareket Listesi" FontFamily="/fonts/Girassol/#Girassol" FontSize="20"  />
+            </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <form:IconicButton Grid.Column="1" Text="Yazdır" Foreground="#1873CC" Command="{Binding PrintCommand}" CommandParameter="{Binding ElementName=sfGrid}" Margin="0,0,20,0">
+                    <form:IconicButton.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="#1873CC" Geometry="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"/>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </form:IconicButton.Source>
+                </form:IconicButton>
+
+                <form:IconicButton Grid.Column="1" Text="Excel" Foreground="#1F6F43" Command="{Binding ExportCommand}" CommandParameter="{Binding ElementName=sfGrid}" Margin="0,0,20,0">
+                    <form:IconicButton.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="#1F6F43" Geometry="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm60.1 106.5L224 336l60.1 93.5c5.1 8-.6 18.5-10.1 18.5h-34.9c-4.4 0-8.5-2.4-10.6-6.3C208.9 405.5 192 373 192 373c-6.4 14.8-10 20-36.6 68.8-2.1 3.9-6.1 6.3-10.5 6.3H110c-9.5 0-15.2-10.5-10.1-18.5l60.3-93.5-60.3-93.5c-5.2-8 .6-18.5 10.1-18.5h34.8c4.4 0 8.5 2.4 10.6 6.3 26.1 48.8 20 33.6 36.6 68.5 0 0 6.1-11.7 36.6-68.5 2.1-3.9 6.2-6.3 10.6-6.3H274c9.5-.1 15.2 10.4 10.1 18.4zM384 121.9v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </form:IconicButton.Source>
+                </form:IconicButton>
+                
+                <form:IconicButton Grid.Column="1" Text="Yeni" Foreground="#D7AB69" Command="{Binding NewCommand}" Margin="0,0,20,0">
+                    <form:IconicButton.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="#D7AB69" Geometry="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z"/>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </form:IconicButton.Source>
+                </form:IconicButton>
+
+                <form:IconicButton Grid.Column="1" Text="Sil" Foreground="Red" Command="{Binding DeleteCommand}" CommandParameter="{Binding Selected}" Margin="0,0,20,0">
+                    <form:IconicButton.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="Red" Geometry="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"/>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </form:IconicButton.Source>
+                </form:IconicButton>
+
+                <form:IconicButton Grid.Column="1" Text="{Binding SaveName}" Foreground="#4ED544" Command="{Binding SaveCommand}" CommandParameter="{Binding Selected}">
+                    <form:IconicButton.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing Brush="#4ED544" Geometry="M433.941 129.941l-83.882-83.882A48 48 0 0 0 316.118 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V163.882a48 48 0 0 0-14.059-33.941zM224 416c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64s64 28.654 64 64c0 35.346-28.654 64-64 64zm96-304.52V212c0 6.627-5.373 12-12 12H76c-6.627 0-12-5.373-12-12V108c0-6.627 5.373-12 12-12h228.52c3.183 0 6.235 1.264 8.485 3.515l3.48 3.48A11.996 11.996 0 0 1 320 111.48z"/>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </form:IconicButton.Source>
+                </form:IconicButton>
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <GridSplitter Height="2" Grid.Row="1" Background="#007ACC" HorizontalAlignment="Stretch" VerticalAlignment="Top"  />
+            <Syncfusion:SfDataGrid Grid.Row="1" Name="sfGrid" AutoGenerateColumns="False" NavigationMode="Row" Background="White" ColumnSizer="Star" AllowFiltering="True"  AllowGrouping="True" ShowBusyIndicator="True" ShowGroupDropArea="True" AutoExpandGroups="True" AllowSorting="True" ItemsSource="{Binding List}" SelectedItem="{Binding Selected}" SelectedIndex="{Binding SelectedIndex}" Margin="0,20,0,0">
+                <Syncfusion:SfDataGrid.Columns>
+                    <Syncfusion:GridTextColumn MappingName="Tarih" HeaderText="Tarih"/>
+                    <Syncfusion:GridTextColumn MappingName="FisNo" HeaderText="Fiş No"/>
+                    <Syncfusion:GridTextColumn MappingName="Firma.FirmaAd" HeaderText="Firma"/>
+                    <Syncfusion:GridTextColumn MappingName="Arac.Plaka" HeaderText="Araç Plakası"/>
+                    <Syncfusion:GridTextColumn MappingName="Arac.AracTip" HeaderText="Araç Tipi"/>
+                    <Syncfusion:GridTextColumn MappingName="Cins" HeaderText="Cinsi"/>
+                    <Syncfusion:GridTextColumn MappingName="YakitMiktari" HeaderText="Yakıt Miktarı"/>
+                    <Syncfusion:GridTextColumn MappingName="AracKM" HeaderText="Araç KM"/>
+                    <Syncfusion:GridTextColumn MappingName="Nakliyeci.FirmaAd" HeaderText="Nakliyeci"/>
+                    <Syncfusion:GridTextColumn MappingName="Guzergah" HeaderText="Güzergah"/>
+                    <Syncfusion:GridTextColumn MappingName="Durum" HeaderText="Durum"/>
+                    <Syncfusion:GridTextColumn MappingName="Fiyat" HeaderText="Fiyat"/>
+                    <Syncfusion:GridCheckBoxColumn MappingName="Faturalandi" HeaderText="Ftr"/>
+                    <Syncfusion:GridTextColumn MappingName="Aciklama" HeaderText="Açıklama"/>
+                </Syncfusion:SfDataGrid.Columns>
+                <Syncfusion:SfDataGrid.TableSummaryRows>
+                    <Syncfusion:GridTableSummaryRow ShowSummaryInRow="False">
+                        <Syncfusion:GridSummaryRow.SummaryColumns>
+                            <Syncfusion:GridSummaryColumn Name="FiyatTotal"
+                                              Format="'{Sum:c}'"
+                                              MappingName="Fiyat"
+                                              SummaryType="DoubleAggregate" />
+                            <Syncfusion:GridSummaryColumn Name="Aciklama"
+                                              Format="'Toplam : {Count:d} Veri'"
+                                              MappingName="Tarih"
+                                              SummaryType="CountAggregate" />
+                        </Syncfusion:GridSummaryRow.SummaryColumns>
+                    </Syncfusion:GridTableSummaryRow>
+                </Syncfusion:SfDataGrid.TableSummaryRows>
+            </Syncfusion:SfDataGrid>
+            <StackPanel Margin="0,0,0,20">
+                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="Hareket Bilgileri" FontFamily="/fonts/Girassol/#Girassol" FontSize="18" TextDecorations="Underline"  />
+                <UniformGrid Columns="3">
+                    <!--                            Selected Properties After Create Model                  -->
+                    <form:LabelPanel Header="Tarih">
+                        <form:LabelPanel.Content>
+                            <DatePicker SelectedDate="{Binding Selected.Tarih,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Fiş No">
+                        <form:LabelPanel.Content>
+                            <TextBox Text="{Binding Selected.FisNo,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Firma">
+                        <form:LabelPanel.Content>
+                            <ComboBox IsEditable="True" ItemsSource="{Binding MusteriList}" DisplayMemberPath="FirmaAd" SelectedValuePath="Id" SelectedValue="{Binding Selected.FirmaId,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Araç Plaka">
+                        <form:LabelPanel.Content>
+                            <ComboBox IsEditable="True" ItemsSource="{Binding AracList}" DisplayMemberPath="Plaka" SelectedValuePath="Id" SelectedValue="{Binding Selected.AracId,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    
+                    <form:LabelPanel Header="Yakıt Miktarı">
+                        <form:LabelPanel.Content>
+                            <TextBox>
+                                <TextBox.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="20"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Text="{Binding Selected.YakitMiktari}"/>
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Right" Grid.Column="1" Text="LT"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Araç KM">
+                        <form:LabelPanel.Content>
+                            <TextBox Text="{Binding Selected.AracKM,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Nakliyeci">
+                        <form:LabelPanel.Content>
+                            <ComboBox IsEditable="True" ItemsSource="{Binding NakliyeciList,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="FirmaAd" SelectedValuePath="Id" SelectedValue="{Binding Selected.NakliyeciId,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Güzergah">
+                        <form:LabelPanel.Content>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource GuzergahEnum}}" SelectedItem="{Binding Selected.Guzergah,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Durum">
+                        <form:LabelPanel.Content>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource DurumEnum}}" SelectedItem="{Binding Selected.Durum,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <form:LabelPanel Header="Fiyat">
+                        <form:LabelPanel.Content>
+                            <TextBox>
+                                <TextBox.Template>
+                                    <ControlTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="20"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Text="{Binding Selected.Fiyat,UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBlock FontWeight="Bold" HorizontalAlignment="Right" Grid.Column="1" Text="TL"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <form:LabelPanel Header="Cinsi">
+                            <form:LabelPanel.Content>
+                                <TextBox Text="{Binding Selected.Cins,UpdateSourceTrigger=PropertyChanged}"/>
+                            </form:LabelPanel.Content>
+                        </form:LabelPanel>
+                        <form:LabelPanel Header="Fatura" Grid.Column="1" HorizontalAlignment="Right">
+                            <form:LabelPanel.Content>
+                                <CheckBox IsChecked="{Binding Selected.Faturalandi,UpdateSourceTrigger=PropertyChanged}"/>
+                            </form:LabelPanel.Content>
+                        </form:LabelPanel>
+                    </Grid>
+                    
+                    <form:LabelPanel Header="Açıklama" Grid.Column="1">
+                        <form:LabelPanel.Content>
+                            <TextBox TextWrapping="Wrap" Text="{Binding Selected.Aciklama,UpdateSourceTrigger=PropertyChanged}"/>
+                        </form:LabelPanel.Content>
+                    </form:LabelPanel>
+                </UniformGrid>
+                    
+                
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

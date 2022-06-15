@@ -1,0 +1,73 @@
+﻿<Window x:Class="KamyonTakip.Main.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KamyonTakip.Main.View"
+        xmlns:viewmodel ="clr-namespace:KamyonTakip.Main.ViewModel"
+        xmlns:form="clr-namespace:KamyonTakip.Component.Form;assembly=KamyonTakip.Component"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"  
+        Title="MainWindow" MinHeight="450" MinWidth="800" AllowsTransparency="True" WindowStyle="None"
+        x:Name="Anasayfa"
+        Background="Transparent">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel x:Name="vm" />
+    </Window.DataContext>
+    <Border BorderThickness="0" CornerRadius="15" Background="White" Margin="10">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <form:WindowHeader WindowName="Takip Sayfası" ForeColor="Black" CloseCommand="{Binding CloseCommand}"  MinimizeCommand="{Binding MinimizeCommand}" MaximizeCommand="{Binding MaximizeCommand}" CommandParameter="{Binding ElementName=Anasayfa}" MouseDown="WindowHeader_MouseDown" MouseDoubleClick="WindowHeader_MouseDoubleClick">
+                <form:WindowHeader.WindowIcon>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <GeometryDrawing Brush="Black" Geometry="M628.88 210.65L494.39 49.27A48.01 48.01 0 0 0 457.52 32H32C14.33 32 0 46.33 0 64v288c0 17.67 14.33 32 32 32h32c0 53.02 42.98 96 96 96s96-42.98 96-96h128c0 53.02 42.98 96 96 96s96-42.98 96-96h32c17.67 0 32-14.33 32-32V241.38c0-11.23-3.94-22.1-11.12-30.73zM64 192V96h96v96H64zm96 240c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm160-240h-96V96h96v96zm160 240c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm-96-240V96h66.02l80 96H384z" />
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </form:WindowHeader.WindowIcon>
+            </form:WindowHeader>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <form:LeftToggleMenu Name="Toggle" ToggleMenusSource="{Binding MenuItems}" ForeColor="White" Command="{Binding OpenUserControlCommand}"/>
+                    <syncfusion:TabControlExt Grid.Column="1" EnableLabelEdit="False" ItemsSource="{Binding TabItems}" Height="{Binding GridHeight}" BorderThickness="0" SelectedItem="{Binding SelectedTabItem}" CloseButtonType="Both" TabClosed="TabControlExt_TabClosed">
+                        <syncfusion:TabControlExt.ItemContainerStyle>
+                            <Style TargetType="{x:Type syncfusion:TabItemExt}">
+                            <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Header}" />
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </syncfusion:TabControlExt.ItemContainerStyle>
+                        <syncfusion:TabControlExt.ContentTemplate>
+                            <DataTemplate>
+                                <ContentPresenter Content="{Binding UserControlContent}"/>
+                            </DataTemplate>
+                        </syncfusion:TabControlExt.ContentTemplate>
+                    </syncfusion:TabControlExt>
+            </Grid>
+            <Grid Grid.Row="2" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Left" Text="Copyright © Her Hakkı Saklıdır |" FontFamily="Century Gothic" FontSize="14" FontWeight="Regular" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Kullanıcı : "/>
+                    <TextBlock Text="{Binding UserName}"/>
+                </StackPanel>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="Design By Özcan MADEN" FontFamily="Century Gothic" FontSize="14" FontWeight="Bold" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
